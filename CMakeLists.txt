@@ -436,6 +436,10 @@ foreach(module ${config_module_list})
 endforeach()
 
 # add events lib after modules and libs as it needs to know all source files (PX4_SRC_FILES)
+# Ensure custom test module is built: src/modules/prueba1
+if(EXISTS ${PX4_SOURCE_DIR}/src/modules/prueba1/CMakeLists.txt)
+	add_subdirectory(src/modules/prueba1)
+endif()
 add_subdirectory(src/lib/events EXCLUDE_FROM_ALL)
 # metadata needs PX4_MODULE_CONFIG_FILES
 add_subdirectory(src/lib/metadata EXCLUDE_FROM_ALL)
